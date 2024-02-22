@@ -1,6 +1,6 @@
-import { supabase } from "/Users/linusholm/Documents/Job-Finder/project_react_native_jobs/lib/supabase.jsx";
-import Auth from "../auth/Auth";
-import Account from "/Users/linusholm/Documents/Job-Finder/project_react_native_jobs/components/account/Account.jsx";
+import { supabase } from "../lib/supabase";
+import Auth from "../components/auth/Auth";
+import Account from "../components/account/Account";
 import { useRouter } from "expo-router";
 import "react-native-url-polyfill/auto";
 import { useState, useEffect } from "react";
@@ -15,15 +15,17 @@ export default function LoginPage() {
       setSession(session);
     });
 
-    supabase.auth.onAuthStateChange((_event, session) => {
+    const authListener = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       if (session) {
         router.push("/home");
+      } else {
+        router.push("../LoginPage");
       }
     });
     return () => {
       if (authListener) {
-        authListener.unsubscribe();
+        authListener.unsubscribe;
       }
     };
   }, []);
@@ -38,3 +40,6 @@ export default function LoginPage() {
     </View>
   );
 }
+
+/* LoginPage.path = "/login";
+ */

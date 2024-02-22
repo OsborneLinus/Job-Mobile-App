@@ -29,7 +29,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
     );
     return () => {
       if (authListener) {
-        authListener.unsubscribe();
+        authListener.unsubscribe;
       }
     };
   }, []);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "/Users/linusholm/Documents/Job-Finder/project_react_native_jobs/lib/supabase.jsx";
+import { supabase } from "../../lib/supabase";
 import { StyleSheet, View, Alert } from "react-native";
 import { Button, Input } from "react-native-elements";
 
